@@ -10,9 +10,10 @@ using Edges = std::vector<Edge>;
 class Vertex
 {
 public:
-    Vertex(int id, const Edges & edges);
+    Vertex(int id);
     int id() const;
     const Edges & edges() const;
+    void add(const Edge & edge);
 
 private:
     int id_;

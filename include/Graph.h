@@ -1,24 +1,26 @@
 #ifndef GRAPH_H
 #define GRAPH_H
 
+#include <istream>
 #include <vector>
+#include "Vertex.h"
+#include "Edge.h"
 
-class Vertex;
 using Vertices = std::vector<Vertex>;
-class Edge;
 using Edges = std::vector<Edge>;
 
 class Graph
 {
 public:
-    Graph(const Vertices & vertices, const Edges & edges);
-
     const Vertices & vertices() const;
     const Edges & edges() const;
+    friend std::istream & operator>>(std::istream & in, Graph & graph);
 
 private:
     Vertices vertices_;
     Edges edges_;
 };
+
+std::istream & operator>>(std::istream & in, Graph & graph);
 
 #endif // GRAPH_H
