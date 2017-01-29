@@ -13,7 +13,7 @@ public:
     const Endpoints & endpoints() const;
 
 private:
-    std::pair<Vertex,Vertex> endpoints_;
+    Endpoints endpoints_;
 };
 
 #endif // EDGE_H

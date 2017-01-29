@@ -1,24 +1,38 @@
 #include <fstream>
 #include <iostream>
+#include <iterator>
+#include <sstream>
+#include <vector>
 #include "Graph.h"
 
 using namespace std;
+using Vector = vector<int>;
+using AdjacencyList = vector<Vector>;
 
-Graph read()
+AdjacencyList read()
 {
-    Graph g;
+    AdjacencyList al;
     ifstream is;
     is.open("C:\\Users\\csr\\Documents\\Algorithm design and analyisis I\\programming assignments\\KargerMinCut\\KargerMinCut.txt",std::ios::in);
     if (is.is_open())
     {
-        is >> g;
-        is.close();
+        string line;
+        while (getline(is,line))
+        {
+            Vector v;
+            istringstream iss(line);
+            copy(istream_iterator<int>(iss),istream_iterator<int>(), back_insert_iterator<Vector>(v));
+            copy(begin(v),end(v),ostream_iterator<int>(cout, " "));
+            cout << endl;
+            al.emplace_back(v);
+        }
     }
     else
     {
-        throw runtime_error("file is not open!!");
+        throw runtime_error("File is not open!!");
     }
-    return g;
+    is.close();
+    return al;
 }
 
 int randomContractionAlgorithm(const Graph & g)
@@ -28,7 +42,8 @@ int randomContractionAlgorithm(const Graph & g)
 
 int main()
 {
-    const Graph g = read();
+    const AdjacencyList al{read()};
+    const Graph g{al};
     const int minCut = randomContractionAlgorithm(g);
     cout << "Minimum cut: " << minCut << endl;
     return 0;

@@ -1,39 +1,28 @@
-#include <iostream>
-#include <iterator>
-#include <sstream>
-#include <string>
 #include "Graph.h"
-
-const Vertices & Graph::vertices() const { return this->vertices_; }
-const Edges & Graph::edges() const { return this->edges_; }
 
 using namespace std;
 
-istream & operator>>(istream & in, Graph & graph)
+Graph::Graph(const AdjacencyList & al)
 {
-    string line;
-    Vertices vertices;
-    Edges edges;
-    using Vector = vector<int>;
-    while (getline(in,line))
+    for (const Vector & v : al)
     {
-        Vector v;
-        istringstream iss(line);
-        copy(istream_iterator<int>(iss),istream_iterator<int>(), back_insert_iterator<Vector>(v));
-        copy(begin(v),end(v),ostream_iterator<int>(cout, " "));
-        cout << endl;
         const int vertexId = v[0];
-        Vertex vertex(vertexId);
-//        const Vector aux(++begin(v),end(v));
-//        for (int n : aux)
-//        {
-//            const Edge edge(vertex, Vertex(n));
-//            vertex.add(edge);
-//            edges.emplace_back(edge);
-//        }
-        vertices.emplace_back(vertex);
+        const Vertex vertex(vertexId);
+        this->vertices_.emplace_back(vertex);
     }
-    graph.vertices_ = vertices;
-    graph.edges_ = edges;
-    return in;
+    for (size_t i = 0; i < al.size(); ++i)
+    {
+        Vertex & one = this->vertices_[i];
+        const Vector & v = al[i];
+        for (size_t j = 1; j < v.size(); ++j)
+        {
+            const Vertex & two = this->vertices_[j];
+            const Edge edge(one, two);
+//            one.add(edge);
+            this->edges_.emplace_back(edge);
+        }
+    }
 }
+
+const Vertices & Graph::vertices() const { return this->vertices_; }
+const Edges & Graph::edges() const { return this->edges_; }
