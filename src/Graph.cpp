@@ -19,5 +19,5 @@ Graph::Graph(const AdjacencyList & al)
     }
 }
 
-const Vertices & Graph::vertices() const { return this->vertices_; }
-const Edges & Graph::edges() const { return this->edges_; }
+Vertices & Graph::vertices() { return this->vertices_; }
+Edges & Graph::edges() { return this->edges_; }

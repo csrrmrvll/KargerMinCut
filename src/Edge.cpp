@@ -6,5 +6,5 @@ Edge::Edge(const Vertex & a, const Vertex & b)
 {
 }
 
-const Endpoints & Edge::endpoints() const { return this->endpoints_; }
+Endpoints & Edge::endpoints() { return this->endpoints_; }
 

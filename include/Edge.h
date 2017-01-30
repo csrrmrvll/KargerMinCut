@@ -10,7 +10,7 @@ class Edge
 {
 public:
     Edge(const Vertex & a, const Vertex & b);
-    const Endpoints & endpoints() const;
+    Endpoints & endpoints();
 
 private:
     Endpoints endpoints_;

@@ -7,3 +7,8 @@ Vertex::Vertex(int id)
 }
 
 int Vertex::id() const { return this->id_; }
+
+bool operator==(const Vertex & a, const Vertex & b)
+{
+    return a.id() == b.id();
+}

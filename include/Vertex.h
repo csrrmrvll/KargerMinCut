@@ -8,9 +8,12 @@ class Vertex
 public:
     Vertex(int id);
     int id() const;
+    friend bool operator==(const Vertex & a, const Vertex & b);
 
 private:
     int id_;
 };
+
+bool operator==(const Vertex & a, const Vertex & b);
 
 #endif // VERTEX_H

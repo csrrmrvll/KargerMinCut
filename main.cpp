@@ -40,7 +40,7 @@ int main()
 {
     const AdjacencyList al{read()};
     const Graph g{al};
-    const int minCut = RandomContractionAlgorithm().run(g);
+    const int minCut = RandomContractionAlgorithm::run(g);
     cout << "Minimum cut: " << minCut << endl;
     return 0;
 }

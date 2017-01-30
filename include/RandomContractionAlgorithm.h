@@ -6,7 +6,7 @@ class Graph;
 class RandomContractionAlgorithm
 {
 public:
-    int run(const Graph & graph);
+    static int run(Graph graph);
 };
 
 #endif // RANDOMCONTRACTIONALGORITHM_H
