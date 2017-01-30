@@ -56,6 +56,13 @@ void mergeVertices(Edge & edge, Graph & graph)
             });
 }
 
+Edge randomEdge(const Edges & edges)
+{
+    size_t sz = edges.size();
+    int idx = sz > 1 ? randomIndex(0, sz - 1) : 0;
+    return edges[idx];
+}
+
 int RandomContractionAlgorithm::run(Graph graph)
 {
     Vertices & vertices = graph.vertices();
@@ -69,9 +76,7 @@ int RandomContractionAlgorithm::run(Graph graph)
         removeSelfLoops(graph);
         while(vertices.size() > 2)
         {
-            size_t sz = edges.size();
-            int idx = sz > 1 ? randomIndex(0, sz - 1) : 0;
-            Edge edge = edges[idx];
+            Edge edge = randomEdge(edges);
             mergeVertices(edge, graph);
             removeSelfLoops(graph);
         }
