@@ -21,28 +21,22 @@ void removeSelfLoops(Graph & graph)
 void mergeVertices(Edge & edge, Graph & graph)
 {
     Vertices & vertices = graph.vertices();
-    vertices.erase(remove_if(begin(vertices),end(vertices),
-                             [&edge](const Vertex & vertex)->bool
-                             {
-                                 const Endpoints & endpoints = edge.endpoints();
-                                 const int id = vertex.id();
-                                 return endpoints.second == id;
-                              }),
-                              end(vertices));
+    Endpoints & endpoints = edge.endpoints();
+    const Vertex    & merged = endpoints.first,
+                    & toMerge = endpoints.second;
+    vertices.erase(remove(begin(vertices),end(vertices),toMerge));
     Edges & edges = graph.edges();
     for_each(begin(edges),end(edges),
-            [&edge](Edge & e)->void
+            [&merged,&toMerge](Edge & e)->void
             {
-                const int   newId = edge.endpoints().first.id(),
-                            oldId = edge.endpoints().second.id();
                 Endpoints & endpoints = e.endpoints();
-                if (oldId == endpoints.first)
+                if (toMerge == endpoints.first)
                 {
-                    endpoints.first = newId;
+                    endpoints.first = merged;
                 }
-                if (oldId == endpoints.second)
+                if (toMerge == endpoints.second)
                 {
-                    endpoints.second = newId;
+                    endpoints.second = merged;
                 }
             });
 }
