@@ -18,15 +18,6 @@ void removeSelfLoops(Graph & graph)
                         end(edges));
 }
 
-int randomIndex(int first, int last)
-{
-    random_device rd;
-    mt19937 rng(rd());
-    uniform_int_distribution<int> dist(first, last);
-    const int result = dist(rng);
-    return result;
-}
-
 void mergeVertices(Edge & edge, Graph & graph)
 {
     Vertices & vertices = graph.vertices();
@@ -54,6 +45,15 @@ void mergeVertices(Edge & edge, Graph & graph)
                     endpoints.second = newId;
                 }
             });
+}
+
+int randomIndex(int first, int last)
+{
+    random_device rd;
+    mt19937 rng(rd());
+    uniform_int_distribution<int> dist(first, last);
+    const int result = dist(rng);
+    return result;
 }
 
 Edge randomEdge(const Edges & edges)
