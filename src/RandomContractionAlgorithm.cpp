@@ -63,7 +63,7 @@ Edge randomEdge(const Edges & edges)
     return edges[idx];
 }
 
-int RandomContractionAlgorithm::run(Graph graph)
+size_t RandomContractionAlgorithm::run(Graph graph)
 {
     Vertices & vertices = graph.vertices();
     size_t size = vertices.size();

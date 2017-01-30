@@ -9,7 +9,7 @@
 using Vertices = std::vector<Vertex>;
 using Edges = std::vector<Edge>;
 using Vector = std::vector<int>;
-using AdjacencyList = std::vector<Vector>;
+class AdjacencyList;
 
 class Graph
 {

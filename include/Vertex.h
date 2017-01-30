@@ -14,5 +14,6 @@ private:
 };
 
 bool operator==(const Vertex & a, const Vertex & b);
+bool operator<(const Vertex & a, const Vertex & b);
 
 #endif // VERTEX_H

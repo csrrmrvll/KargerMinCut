@@ -3,12 +3,12 @@
 #include <iterator>
 #include <sstream>
 #include <vector>
+#include "AdjacencyList.h"
 #include "Graph.h"
 #include "RandomContractionAlgorithm.h"
 
 using namespace std;
 using Vector = vector<int>;
-using AdjacencyList = vector<Vector>;
 
 AdjacencyList read()
 {
@@ -25,7 +25,12 @@ AdjacencyList read()
             copy(istream_iterator<int>(iss),istream_iterator<int>(), back_insert_iterator<Vector>(v));
 //            copy(begin(v),end(v),ostream_iterator<int>(cout, " "));
 //            cout << endl;
-            al.emplace_back(v);
+            const Vertex vertex{v[0]};
+            al.addVertex(vertex);
+            for (size_t i = 1; i < v.size(); ++i)
+            {
+                al.addEdge(vertex,v[i]);
+            }
         }
     }
     else
@@ -40,7 +45,7 @@ int main()
 {
     const AdjacencyList al{read()};
     const Graph g{al};
-    const int minCut = RandomContractionAlgorithm::run(g);
+    const size_t minCut = RandomContractionAlgorithm::run(g);
     cout << "Minimum cut: " << minCut << endl;
     return 0;
 }

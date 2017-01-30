@@ -12,3 +12,8 @@ bool operator==(const Vertex & a, const Vertex & b)
 {
     return a.id() == b.id();
 }
+
+bool operator<(const Vertex & a, const Vertex & b)
+{
+    return a.id() < b.id();
+}
