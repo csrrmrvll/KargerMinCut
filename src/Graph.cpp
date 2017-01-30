@@ -7,19 +7,14 @@ Graph::Graph(const AdjacencyList & al)
     for (const Vector & v : al)
     {
         const int vertexId = v[0];
-        const Vertex vertex(vertexId);
-        this->vertices_.emplace_back(vertex);
-    }
-    for (size_t i = 0; i < al.size(); ++i)
-    {
-        Vertex & one = this->vertices_[i];
-        const Vector & v = al[i];
+        const Vertex one(vertexId);
+        this->vertices_.push_back(one);
         for (size_t j = 1; j < v.size(); ++j)
         {
-            const Vertex & two = this->vertices_[j];
+            const Vertex two = v[j];
+            this->vertices_.push_back(two);
             const Edge edge(one, two);
-//            one.add(edge);
-            this->edges_.emplace_back(edge);
+            this->edges_.push_back(edge);
         }
     }
 }
