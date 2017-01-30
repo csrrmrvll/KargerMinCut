@@ -23,8 +23,8 @@ AdjacencyList read()
             Vector v;
             istringstream iss(line);
             copy(istream_iterator<int>(iss),istream_iterator<int>(), back_insert_iterator<Vector>(v));
-            copy(begin(v),end(v),ostream_iterator<int>(cout, " "));
-            cout << endl;
+//            copy(begin(v),end(v),ostream_iterator<int>(cout, " "));
+//            cout << endl;
             al.emplace_back(v);
         }
     }
