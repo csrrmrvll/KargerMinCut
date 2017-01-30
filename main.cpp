@@ -4,6 +4,7 @@
 #include <sstream>
 #include <vector>
 #include "Graph.h"
+#include "RandomContractionAlgorithm.h"
 
 using namespace std;
 using Vector = vector<int>;
@@ -35,16 +36,11 @@ AdjacencyList read()
     return al;
 }
 
-int randomContractionAlgorithm(const Graph & g)
-{
-    return 3;
-}
-
 int main()
 {
     const AdjacencyList al{read()};
     const Graph g{al};
-    const int minCut = randomContractionAlgorithm(g);
+    const int minCut = RandomContractionAlgorithm().run(g);
     cout << "Minimum cut: " << minCut << endl;
     return 0;
 }
