@@ -22,7 +22,9 @@ Graph::Graph(const AdjacencyList & al)
 }
 
 Vertices & Graph::vertices() { return this->vertices_; }
+const Vertices & Graph::vertices() const { return this->vertices_; }
 Edges & Graph::edges() { return this->edges_; }
+const Edges & Graph::edges() const { return this->edges_; }
 
 ostream & operator<<(ostream & os, Edges & edges)
 {

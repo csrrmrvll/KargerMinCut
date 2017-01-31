@@ -63,12 +63,12 @@ Edge randomEdge(const Edges & edges, myclock::time_point beginning)
     return edges[idx];
 }
 
-size_t RandomContractionAlgorithm::run(Graph & graph)
+size_t RandomContractionAlgorithm::run(const Graph & graph)
 {
     const myclock::time_point beginning = myclock::now();
-    size_t size = graph.vertices().size();
-    size_t  runs = size * size,
-            minCut = UINT_MAX;
+    const size_t    size = graph.vertices().size(),
+                    runs = size * size;
+    size_t minCut = UINT_MAX;
     for (size_t i = 0; i < runs; ++i)
     {
         Graph g = graph;
@@ -80,7 +80,7 @@ size_t RandomContractionAlgorithm::run(Graph & graph)
             mergeVertices(edge, g);
             removeSelfLoops(g);
         }
-        size_t cut = edges.size();
+        const size_t cut = edges.size();
         if (cut < minCut)
         {
             minCut = cut;

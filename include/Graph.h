@@ -16,7 +16,9 @@ class Graph
 public:
     Graph(const AdjacencyList & al);
     Vertices & vertices();
+    const Vertices & vertices() const;
     Edges & edges();
+    const Edges & edges() const;
 
 private:
     Vertices vertices_;
