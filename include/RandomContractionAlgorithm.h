@@ -6,7 +6,7 @@ class Graph;
 class RandomContractionAlgorithm
 {
 public:
-    static size_t run(Graph graph);
+    static size_t run(Graph & graph);
 };
 
 #endif // RANDOMCONTRACTIONALGORITHM_H

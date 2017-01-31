@@ -1,6 +1,7 @@
 #ifndef VERTEX_H
 #define VERTEX_H
 
+#include <ostream>
 #include <vector>
 
 class Vertex
@@ -15,5 +16,6 @@ private:
 
 bool operator==(const Vertex & a, const Vertex & b);
 bool operator<(const Vertex & a, const Vertex & b);
+std::ostream & operator<<(std::ostream & os, const Vertex & v);
 
 #endif // VERTEX_H

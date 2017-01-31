@@ -14,7 +14,13 @@ AdjacencyList read()
 {
     AdjacencyList al;
     ifstream is;
-    is.open("C:\\Users\\csr\\Documents\\Algorithm design and analyisis I\\programming assignments\\KargerMinCut\\KargerMinCut.txt",std::ios::in);
+    is.open("C:\\Users\\csr\\Documents\\Algorithm design and analyisis I\\programming assignments\\KargerMinCut\\KargerMinCut.txt",ios::in);
+//    is.open("C:\\Users\\csr\\Documents\\Algorithm design and analyisis I\\programming assignments\\KargerMinCut\\tc1.txt",ios::in);
+//    is.open("C:\\Users\\csr\\Documents\\Algorithm design and analyisis I\\programming assignments\\KargerMinCut\\tc2.txt",ios::in);
+//    is.open("C:\\Users\\csr\\Documents\\Algorithm design and analyisis I\\programming assignments\\KargerMinCut\\tc3.txt",ios::in);
+//    is.open("C:\\Users\\csr\\Documents\\Algorithm design and analyisis I\\programming assignments\\KargerMinCut\\tc4.txt",ios::in);
+//    is.open("C:\\Users\\csr\\Documents\\Algorithm design and analyisis I\\programming assignments\\KargerMinCut\\tc5.txt",ios::in);
+//    is.open("C:\\Users\\csr\\Documents\\Algorithm design and analyisis I\\programming assignments\\KargerMinCut\\tc6.txt",ios::in);
     if (is.is_open())
     {
         string line;
@@ -26,11 +32,7 @@ AdjacencyList read()
 //            copy(begin(v),end(v),ostream_iterator<int>(cout, " "));
 //            cout << endl;
             const Vertex vertex{v[0]};
-            al.addVertex(vertex);
-            for (size_t i = 1; i < v.size(); ++i)
-            {
-                al.addEdge(vertex,v[i]);
-            }
+            al[vertex] = VVector(++begin(v),end(v));
         }
     }
     else
@@ -44,7 +46,7 @@ AdjacencyList read()
 int main()
 {
     const AdjacencyList al{read()};
-    const Graph g{al};
+    Graph g{al};
     const size_t minCut = RandomContractionAlgorithm::run(g);
     cout << "Minimum cut: " << minCut << endl;
     return 0;

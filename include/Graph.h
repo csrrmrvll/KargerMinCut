@@ -1,15 +1,15 @@
 #ifndef GRAPH_H
 #define GRAPH_H
 
-#include <istream>
+#include <ostream>
 #include <vector>
-#include "Vertex.h"
+#include "AdjacencyList.h"
 #include "Edge.h"
+#include "Vertex.h"
 
 using Vertices = std::vector<Vertex>;
 using Edges = std::vector<Edge>;
 using Vector = std::vector<int>;
-class AdjacencyList;
 
 class Graph
 {
@@ -22,5 +22,8 @@ private:
     Vertices vertices_;
     Edges edges_;
 };
+
+std::ostream & operator<<(std::ostream & os, Edges & edges);
+std::ostream & operator<<(std::ostream & os, Vertices & vertices);
 
 #endif // GRAPH_H
