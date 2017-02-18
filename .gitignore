@@ -1,5 +1,4 @@
 /*.depend
-/obj/Debug
 /*.layout
-/obj/Release/*.o
-/obj/Release/src/*.o
+/obj
+/bin
